@@ -8,6 +8,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_TAXONOMY_PATH = PROJECT_ROOT / "config" / "taxonomy.yaml"
 DEFAULT_EVAL_PATH = PROJECT_ROOT / "config" / "eval.yaml"
+DEFAULT_SOURCES_PATH = PROJECT_ROOT / "config" / "sources.yaml"
+DEFAULT_LABELING_PATH = PROJECT_ROOT / "config" / "labeling.yaml"
 DEFAULT_TRAIN_PATH = PROJECT_ROOT / "config" / "train.yaml"
 DEFAULT_SWEEP_PATH = PROJECT_ROOT / "config" / "sweep.yaml"
 DEFAULT_COST_PATH = PROJECT_ROOT / "config" / "cost.yaml"
@@ -30,6 +32,8 @@ class Settings(BaseSettings):
     data_dir: Path = PROJECT_ROOT / "data"
     taxonomy_path: Path = DEFAULT_TAXONOMY_PATH
     eval_path: Path = DEFAULT_EVAL_PATH
+    sources_path: Path = DEFAULT_SOURCES_PATH
+    labeling_path: Path = DEFAULT_LABELING_PATH
     train_path: Path = DEFAULT_TRAIN_PATH
     sweep_path: Path = DEFAULT_SWEEP_PATH
     cost_path: Path = DEFAULT_COST_PATH

@@ -18,8 +18,11 @@ data/interim/*
 !data/interim/.gitkeep
 data/processed/*
 !data/processed/.gitkeep
+!data/processed/split_manifest.json
 results/*
 !results/.gitkeep
 !results/plots/
 results/plots/*
 !results/plots/.gitkeep
+!results/plots/leak_audit.png
+!results/plots/leak_audit.json

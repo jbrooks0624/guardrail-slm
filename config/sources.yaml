@@ -1,0 +1,99 @@
+# Hub sources and column maps. Change these only by committing a new contract.
+# expected_rows are Hub split sizes from the dataset card, counted before
+# empty-text drops and exact-duplicate collapse.
+# Synth fills context-injection (E) only if train-eligible E is below this floor.
+# Those rows are tagged synthetic and are never eligible for any test slice.
+synth_min_train_eligible_e: 500
+
+# Split construction. Train/test prevalences still come from config/eval.yaml.
+splits:
+  seed: 0
+  val_fraction: 0.10
+  tactic_holdout_fraction: 0.20
+  pair_holdout_fraction: 0.15
+  minhash_jaccard: 0.80
+  minhash_num_perm: 128
+  shingle_n: 5
+  prevalence_tolerance: 0.02
+  train_target_size: 20000
+  leak_embedder: sentence-transformers/all-MiniLM-L6-v2
+  leak_cosine_threshold: 0.90
+  leak_jaccard_threshold: 0.80
+
+sources:
+  deepset:
+    hub_name: deepset/prompt-injections
+    license: Apache-2.0
+    provenance: human
+    allowed_in_train: true
+    gated: false
+    text_field: text
+    label_field: label
+    label_map:
+      0: benign
+      1: attack
+    expected_rows:
+      train: 546
+      test: 116
+  jackhhao:
+    hub_name: jackhhao/jailbreak-classification
+    license: Apache-2.0
+    provenance: human
+    allowed_in_train: true
+    gated: false
+    text_field: prompt
+    label_field: type
+    label_map:
+      jailbreak: attack
+      benign: benign
+    expected_rows:
+      train: 1044
+      test: 262
+  dolly:
+    hub_name: databricks/databricks-dolly-15k
+    license: CC-BY-SA-3.0
+    provenance: human
+    allowed_in_train: true
+    gated: false
+    always_benign: true
+    instruction_field: instruction
+    context_field: context
+    expected_rows:
+      train: 15011
+  wildjailbreak:
+    hub_name: allenai/wildjailbreak
+    license: ODC-BY
+    provenance: gpt_generated
+    allowed_in_train: true
+    gated: true
+    hub_config: train
+    # Released train.tsv has no tactics column; fields are quoted and contain
+    # newlines, so we parse it with csv instead of datasets.load_dataset.
+    hub_tsv_file: train/train.tsv
+    vanilla_field: vanilla
+    adversarial_field: adversarial
+    tactics_field: tactics
+    data_type_field: data_type
+    data_type_labels:
+      vanilla_harmful: attack
+      vanilla_benign: benign
+      adversarial_harmful: attack
+      adversarial_benign: benign
+    expected_rows:
+      train: 261559
+  xtram1:
+    hub_name: xTRam1/safe-guard-prompt-injection
+    license: undeclared
+    provenance: human
+    allowed_in_train: false
+    gated: false
+    text_field: text
+    label_field: label
+    label_map:
+      0: benign
+      1: attack
+      benign: benign
+      injection: attack
+    expected_rows:
+      train: 8236
+      test: 2060

@@ -1,0 +1,12 @@
+{
+  "cosine_max": 0.9946797740837959,
+  "cosine_threshold": 0.9,
+  "held_out_tactic_sets": [],
+  "jaccard_max": 0.7578125,
+  "jaccard_threshold": 0.8,
+  "n_test": 15927,
+  "n_test_cosine_above": 11,
+  "n_test_jaccard_above": 0,
+  "n_train": 20000,
+  "vanilla_overlap": 0
+}

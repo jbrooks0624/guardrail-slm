@@ -1,0 +1,32 @@
+# How attack rows get A-E labels. Binary attack/benign is never relabeled.
+llm_model: gpt-5.6-luna
+reasoning_effort: none
+llm_sources:
+  - deepset
+  - jackhhao
+audit_size: 200
+residual_token: C
+# wildjailbreak train.tsv has no tactics column; these apply if tactics appear.
+tactic_keywords:
+  B:
+    - persona
+    - roleplay
+    - role-play
+    - role play
+    - character
+    - dan
+  D:
+    - encoding
+    - obfusc
+    - cipher
+    - base64
+    - rot13
+    - hex
+    - leetspeak
+  E:
+    - document
+    - context
+    - indirect
+    - retrieval
+    - pasted
+    - webpage

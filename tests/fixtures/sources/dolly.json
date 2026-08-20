@@ -1,0 +1,11 @@
+{
+  "train": [
+    {"instruction": "Name three primary colors.", "context": "", "response": "Red, blue, yellow.", "category": "open_qa"},
+    {
+      "instruction": "Given the passage, who won?",
+      "context": "In 1969 the Mets won the World Series.",
+      "response": "The Mets.",
+      "category": "closed_qa"
+    }
+  ]
+}

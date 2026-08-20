@@ -5,9 +5,15 @@ description = "Fine-tuned small-model guardrail classifier with a measured eval 
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
+    "datasets",
+    "datasketch>=2.0.0",
+    "huggingface-hub",
+    "matplotlib>=3.11.1",
+    "numpy>=2.5.2",
     "pydantic",
     "pydantic-settings",
     "pyyaml",
+    "sentence-transformers>=6.0.0",
     "typer",
 ]
 
