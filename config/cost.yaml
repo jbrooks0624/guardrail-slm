@@ -1,0 +1,8 @@
+# GPU rates are RunPod ballpark figures. Refresh API prices in Phase 5 before
+# publishing the crossover plot.
+gpu:
+  default: l4
+  hourly_usd:
+    l4: 0.44
+    a10g: 0.75
+api: {}

@@ -1,0 +1,44 @@
+[project]
+name = "guardrail-slm"
+version = "0.1.0"
+description = "Fine-tuned small-model guardrail classifier with a measured eval harness"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "pydantic",
+    "pydantic-settings",
+    "pyyaml",
+    "typer",
+]
+
+[project.scripts]
+guardrail-slm = "guardrail_slm.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["guardrail_slm"]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff",
+]
+
+[tool.uv]
+default-groups = ["dev"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = ["--import-mode=importlib"]
+
+[tool.ruff]
+src = ["guardrail_slm", "tests"]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]

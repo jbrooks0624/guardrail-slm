@@ -1,0 +1,4 @@
+# Selected on the eval contract statistic, not macro-F1.
+rank: [8, 16, 32]
+learning_rate: [5.0e-5, 1.0e-4, 2.0e-4]
+num_train_epochs: [2, 3]

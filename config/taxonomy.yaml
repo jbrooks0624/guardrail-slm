@@ -1,0 +1,20 @@
+# Single-token labels. Human-readable names live here, never in the model.
+benign_token: A
+labels:
+  A:
+    name: benign
+    description: No prompt-injection or jailbreak intent.
+  B:
+    name: roleplay
+    description: Persona or roleplay jailbreak.
+  C:
+    name: instruction_override
+    description: Bare instruction override ("ignore previous instructions").
+  D:
+    name: encoding_obfuscation
+    description: Encoding or obfuscation of an attack payload.
+  E:
+    name: context_injection
+    description: Indirect injection via retrieved or pasted context.
+# Delivery channel beats encoding beats persona beats bare override.
+precedence: [E, D, B, C, A]
